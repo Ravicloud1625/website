@@ -16,19 +16,29 @@
 
 			<a href="https://www.google.com/">visit google search</a>
 
+<p>Click the button to get your coordinates.</p>
 
-<h3>JavaScript Timing</h3>
+<button onclick="getLocation()">Try It</button>
 
-<p>Click "Try it". Wait 3 seconds, and the page will alert "Hello".</p>
-
-<button onclick="setTimeout(myFunction, 3000);">Try it</button>
+<p id="demo"></p>
 
 <script>
-function myFunction() {
-  alert('Hello');
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.watchPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+    
+function showPosition(position) {
+    x.innerHTML="Latitude: " + position.coords.latitude + 
+    "<br>Longitude: " + position.coords.longitude;
 }
 </script>
-			<h3> <p style="color:green"> Thank You  </p> </h3>
+<h3> <p style="color:green"> Thank You  </p> </h3>
 
 	</body>
 </html>
